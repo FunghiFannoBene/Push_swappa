@@ -12,8 +12,7 @@
 
 #include "push_swap.h"
 
-
-void convert_and_insert(char **argv, push_swappa **a)
+void circular_struct_build(char **argv, push_swappa **a)
 {
 	int i;
 	i = 1;
@@ -22,16 +21,15 @@ void convert_and_insert(char **argv, push_swappa **a)
 	new_a->indice = i;
 	new_a->valore = atoi(argv[i]);
 	new_a->next = NULL;
-	new_a->prev = NULL;
 	i++;
 	*a = new_a;
+	head_a=a;
 	while(argv[i])
    {
         // crea un nuovo elemento push_swappa e assegnagli il valore di argv[i]
         push_swappa *element_i = malloc(sizeof(push_swappa));
         element_i->indice = i;
         element_i->valore = atoi(argv[i]);
-        element_i->prev = *a;
         element_i->next = NULL;
 
         // aggiungi il nuovo elemento alla fine della lista
@@ -39,30 +37,33 @@ void convert_and_insert(char **argv, push_swappa **a)
         while (scorri->next != NULL) {
             scorri = scorri->next;
         }
+		tail_a = element_i;
         scorri->next = element_i;
-        element_i->prev = scorri;
-
         // passa alla stringa successiva
         i++;
     }
+	tail_a->next = *head_a;
 }
 
 int main(int argc, char **argv)
 {
-	int *value;
 	push_swappa *a;
 	push_swappa *b;
-	a = (push_swappa *)malloc(sizeof(push_swappa));
-	b = (push_swappa *)malloc(sizeof(push_swappa));
-	a = NULL;
-	b = NULL;
 	if(argc > 2)
 	{
-	convert_and_insert(argv, &a);
+	circular_struct_build(argv, &a);
 	}
 	push_swappa *current = a;
-    while (current != NULL) {
-    printf("indice: %d, valore: %d\n", current->indice, current->valore);
+    while (current != tail_a) {
+    printf("indice: %d, valore: %d head: %d tail: %d\n", current->indice, current->valore, (*head_a)->valore, tail_a->valore);
     current = current->next;
     }
+	printf("indice: %d, valore: %d head: %d tail: %d\n", current->indice, current->valore, (*head_a)->valore, tail_a->valore);
+
+	push_swappa *current2 = a;
+	while(current2->indice != 4)
+	{
+		current2 = current2->next;
+	}
+	printf("%d", current2->valore);
 }

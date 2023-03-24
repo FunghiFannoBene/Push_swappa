@@ -17,9 +17,13 @@ typedef struct push_swappa
 	struct push_swappa *next;
 } push_swappa;
 
-struct push_swappa *tail;
-struct push_swappa *head;
+struct push_swappa **head_a;
+struct push_swappa *tail_a;
 
-#include <stdio.h>
+struct push_swappa **head_b;
+struct push_swappa *tail_b;
+
+
 #include <stddef.h>
 #include <stdlib.h>
+#include <unistd.h>
