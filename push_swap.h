@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct push_swappa
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+typedef struct t_push_swappa
 {
 	int valore;
 	int indice;
-	struct push_swappa *next;
-} push_swappa;
+	struct t_push_swappa *next;
+} t_push_swappa;
 
-struct push_swappa **head_a;
-struct push_swappa *tail_a;
-
-struct push_swappa **head_b;
-struct push_swappa *tail_b;
-
+void pushing(t_push_swappa **push, t_push_swappa **pull,t_push_swappa ***t_head_push, t_push_swappa ***t_head_pull);
 
 #include <stddef.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
+
+#endif 

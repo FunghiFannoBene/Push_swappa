@@ -1,3 +1,5 @@
+#include "push_swap.h"
+
 void ft_swap(int *val1, int*val2, char flag)
 {
 	int tmp;
