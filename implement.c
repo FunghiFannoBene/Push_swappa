@@ -5,14 +5,14 @@ void push(t_push_swappa **push, t_push_swappa **take, t_push_swappa **t_push, t_
 	t_push_swappa	*curr;
 
 	if (*push == NULL)
-		return ; // error control and check if they have zero elements.
+		return ;
 
 	curr = *push;
-	if ((*push)->next != *push) // if the next is not itself means it has more than 1 element.
+	if ((*push)->next != *push) 
 	{
 		*push = (*push)->next;
 		(*t_push)->next = *push;
-		(*push)->prev = *t_push; //assign the second element, become the first and now the push list is correct.
+		(*push)->prev = *t_push; 
 	}
 	else
 	{
@@ -45,10 +45,7 @@ void push(t_push_swappa **push, t_push_swappa **take, t_push_swappa **t_push, t_
 
 
 void	rotate(t_push_swappa **head, t_push_swappa **tail, int up_down)
-	//1 = giù di 1, -1 = su di 1;
 {
-	t_push_swappa *curr = *head;
-
 	if (*head == NULL)
 		return ;
 	if (up_down == 1)

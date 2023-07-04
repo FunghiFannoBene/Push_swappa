@@ -9,9 +9,9 @@ int ft_strlen(const char* s)
 	return(i);
 }
 
-static size_t	nstr(const char *s, char c)
+int	nstr(const char *s, char c)
 {
-	size_t	ogni;
+	int	ogni;
 
 	ogni = 0;
 	if (*s != c)
@@ -25,10 +25,10 @@ static size_t	nstr(const char *s, char c)
 	return (ogni);
 }
 
-size_t	checksizesub(const char *s, char c)
+int	checksizesub(const char *s, char c)
 {
-	size_t	i;
-	size_t	a;
+	int	i;
+	int	a;
 
 	i = 0;
 	a = 0;
@@ -44,9 +44,9 @@ size_t	checksizesub(const char *s, char c)
 
 char	**ft_split1(char const *s, char c)
 {
-	size_t	y;
-	size_t	x;
-	size_t	i;
+	int	y;
+	int	x;
+	int	i;
 	char	**result;
 
 	y = 0;
@@ -80,7 +80,7 @@ void swapq(int* a, int*b)
 	*b = tmp;
 }
 
-void quicks(int *a,int first, int last) //last = size-1;
+void quicks(int *a,int first, int last)
 {
 	int i;
 	int j;
@@ -92,7 +92,7 @@ void quicks(int *a,int first, int last) //last = size-1;
 		j=last;
 		while(i<j)
 		{
-			while(a[i]<=a[pivot] && i < last) //considero i valori di a[i] e a[pivot] e scorro
+			while(a[i]<=a[pivot] && i < last)
 				i++;
 			while(a[j]>a[pivot])
 				j--;
